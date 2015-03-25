@@ -13,7 +13,8 @@
 
 @protocol UICustomActionSheetDelegate <NSObject>
 
--(void)customActionSheet:(UICustomActionSheet *)customActionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
+- (void)customActionSheet:(UICustomActionSheet *)customActionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
+- (void)willDismissCustomActionSheet:(UICustomActionSheet *)customActionSheet;
 
 @end
 
@@ -44,11 +45,11 @@
 
 
 
--(instancetype)initWithTitle:(NSString *)caption delegate:(id<UICustomActionSheetDelegate>)delegate buttonTitles:(NSArray *)buttonTitles;
+- (instancetype)initWithTitle:(NSString *)caption delegate:(id<UICustomActionSheetDelegate>)delegate buttonTitles:(NSArray *)buttonTitles;
 
--(void)setButtonColors:(NSArray *)colors;
--(void)setTitle:(NSString *)caption andSubtitle:(NSString *)subtitle;
+- (void)setButtonColors:(NSArray *)colors;
+- (void)setTitle:(NSString *)caption andSubtitle:(NSString *)subtitle;
 
--(void)showInView:(UIView *)view;
+- (void)showInView:(UIView *)view;
 
 @end

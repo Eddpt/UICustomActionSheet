@@ -293,23 +293,22 @@
     
 }
 
-- (void)actionButtonPressed:(UIButton *)button {
-    
-    [_delegate customActionSheet:self clickedButtonAtIndex:[buttonTitles indexOfObject:button.currentTitle]];
-    [self hideAlert];
-    
+- (void)actionButtonPressed:(UIButton *)button
+{
+  [self.delegate customActionSheet:self clickedButtonAtIndex:[buttonTitles indexOfObject:button.currentTitle]];
+  [self hideAlert];
 }
 
 - (void) hideAlert
 {
-
-    [UIView animateWithDuration:0.2 animations:^{
-        backgroundImage.alpha = 0;
-        panel.frame = CGRectMake(0, panel.frame.origin.y + panel.frame.size.height, panel.frame.size.width, panel.frame.size.height);
-    } completion:^(BOOL finished) {
-        [self removeFromSuperview];
-    }];
-    
+  [self.delegate willDismissCustomActionSheet:self];
+  
+  [UIView animateWithDuration:0.2 animations:^{
+    backgroundImage.alpha = 0;
+    panel.frame = CGRectMake(0, panel.frame.origin.y + panel.frame.size.height, panel.frame.size.width, panel.frame.size.height);
+  } completion:^(BOOL finished) {
+    [self removeFromSuperview];
+  }];
 }
 
 @end
